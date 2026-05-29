@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.Scanner;
 
 public class RecursiveFibonacci {
     public static int fib(int N) {
