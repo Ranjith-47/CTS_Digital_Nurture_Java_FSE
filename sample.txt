@@ -1,0 +1,1 @@
+Let us perform file writing in Java using FileWriter.
