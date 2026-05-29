@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class FileWriting {
     public static void main(String[] args) {
         try {
-            FileWriter writer = new FileWriter("sample.txt");
+            FileWriter writer = new FileWriter("output.txt");
             Scanner sc = new Scanner(System.in);
             System.out.print("Enter text: ");
             String text = sc.nextLine();
