@@ -3,7 +3,7 @@ class Car {
     String model;
     int year;
 
-    void showDetails() {
+    void displayDetails() {
         System.out.println("Make  : " + make);
         System.out.println("Model : " + model);
         System.out.println("Year  : " + year);
@@ -24,9 +24,9 @@ public class ClassandObject {
         car2.year = 2026;
 
         System.out.println("Car 1 Details:");
-        car1.showDetails();
+        car1.displayDetails();
 
         System.out.println("Car 2 Details:");
-        car2.showDetails();
+        car2.displayDetails();
     }
 }
