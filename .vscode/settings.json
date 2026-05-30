@@ -2,6 +2,7 @@
   "java.project.referencedLibraries": [
     "lib/**/*.jar",
     "Upskilling/Core Java/mysql-connector-j-9.7.0.jar",
-    "c:\\Users\\Ranjith_Ramanathan\\Desktop\\Core_Java\\Core Java\\mysql-connector-j-9.7.0.jar"
+    "c:\\Users\\Ranjith_Ramanathan\\Desktop\\Core_Java\\Core Java\\mysql-connector-j-9.7.0.jar",
+    "c:\\Users\\Ranjith_Ramanathan\\Desktop\\Core_Java\\Core Java\\cfr-0.152.jar"
   ]
 }
