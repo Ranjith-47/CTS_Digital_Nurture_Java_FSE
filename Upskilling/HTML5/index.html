@@ -3,6 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Local Community Event Portal</title>
+    <style>
+        #welcomeBanner {
+            background-color: blue;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        .highlight {
+            background-color: yellow;
+            padding: 2px 5px;
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -17,10 +29,17 @@
         <a href="#contact">Contact</a> |
         <a href="help.html" target="_blank">Help</a>
     </nav>
+    <!-- Welcome Banner -->
+    <div id="welcomeBanner">
+        Welcome Back, Resident!
+        <span style="color:red; font-weight:bold;">
+            Special Offer: Free Entry for the First 50 Registrations!
+        </span>
+    </div>
     <!-- Main -->
     <main>
         <section id="home">
-            <h2>Home</h2>
+            <h2 class="highlight">Home</h2>
             <p>
                 Welcome to the Local Community Event Portal.
                 Residents can discover local events,
@@ -29,7 +48,7 @@
             </p>
         </section>
         <section id="events">
-            <h2>Events</h2>
+            <h2 class="highlight">Events</h2>
             <p>
                 Explore upcoming cultural programs,
                 workshops, sports events, and
@@ -37,7 +56,7 @@
             </p>
         </section>
         <section id="contact">
-            <h2>Contact</h2>
+            <h2 class="highlight">Contact</h2>
             <p>Email: communityportal@email.com</p>
             <p>Phone: +91 9876543210</p>
         </section>
