@@ -47,21 +47,29 @@
     </style>
     <script>
       function registerEvent(event) {
+        console.log("Register button clicked");
+
         event.preventDefault();
 
         formSubmitted = true;
+
+        console.log("Form submitted successfully");
 
         document.getElementById("registrationOutput").value =
           "Registration Successful! Thank you for registering.";
       }
       function validatePhone() {
         let phone = document.getElementById("phone").value;
-
+        console.log("Phone Entered:", phone);
         if (phone.length !== 10 || isNaN(phone)) {
           alert("Please enter a valid 10-digit phone number.");
         }
       }
       function showFee() {
+        console.log(
+          "Selected Event:",
+          document.getElementById("eventType").value,
+        );
         let eventType = document.getElementById("eventType").value;
         let fee = "";
         if (eventType === "Music Festival") {
@@ -137,6 +145,7 @@
         }
       };
       function findNearbyEvents() {
+        console.log("Finding nearby events...");
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(showPosition, showError, {
             enableHighAccuracy: true,
@@ -181,6 +190,7 @@
         document.getElementById("locationResult").innerHTML = message;
       }
       window.onload = loadPreference;
+      console.log("Local Community Event Portal Loaded");
     </script>
   </head>
   <body>
