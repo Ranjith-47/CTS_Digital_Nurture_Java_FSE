@@ -26,6 +26,27 @@
         text-align: center;
         padding: 10px;
       }
+      form {
+        width: 500px;
+        padding: 15px;
+        border: 1px solid gray;
+        margin-top: 15px;
+      }
+
+      form div {
+        margin-bottom: 12px;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 8px;
+      }
+
+      button {
+        padding: 8px 15px;
+      }
     </style>
     <script>
       function registerEvent(event) {
@@ -33,6 +54,56 @@
 
         document.getElementById("registrationOutput").value =
           "Registration Successful! Thank you for registering.";
+      }
+
+      function validatePhone() {
+        let phone = document.getElementById("phone").value;
+
+        if (phone.length !== 10 || isNaN(phone)) {
+          alert("Please enter a valid 10-digit phone number.");
+        }
+      }
+
+      function showFee() {
+        let eventType = document.getElementById("eventType").value;
+        let fee = "";
+
+        if (eventType === "Music Festival") {
+          fee = "Registration Fee: ₹100";
+        } else if (eventType === "Sports Meet") {
+          fee = "Registration Fee: ₹150";
+        } else if (eventType === "Community Workshop") {
+          fee = "Registration Fee: ₹200";
+        } else if (eventType === "Food Fair") {
+          fee = "Registration Fee: ₹50";
+        } else if (eventType === "Tree Plantation Drive") {
+          fee = "Registration Fee: Free";
+        } else if (eventType === "Art Exhibition") {
+          fee = "Registration Fee: ₹120";
+        }
+
+        document.getElementById("feeDisplay").innerHTML = fee;
+      }
+
+      function showConfirmation() {
+        alert("Your registration is being processed.");
+      }
+
+      function enlargeImage(img) {
+        if (img.style.width === "400px") {
+          img.style.width = "250px";
+          img.style.height = "160px";
+        } else {
+          img.style.width = "400px";
+          img.style.height = "260px";
+        }
+      }
+
+      function countCharacters() {
+        let text = document.getElementById("feedback").value;
+
+        document.getElementById("charCount").innerHTML =
+          "Characters Typed: " + text.length;
       }
     </script>
   </head>
@@ -82,6 +153,7 @@
                 alt="Music Festival"
                 title="Music Festival"
                 class="eventImage"
+                ondblclick="enlargeImage(this)"
               />
               <p><b>Music Festival</b></p>
               <p>Local artists performing live music.</p>
@@ -92,6 +164,7 @@
                 alt="Sports Meet"
                 title="Sports Meet"
                 class="eventImage"
+                ondblclick="enlargeImage(this)"
               />
               <p><b>Sports Meet</b></p>
               <p>Community sports and fitness activities.</p>
@@ -102,6 +175,7 @@
                 alt="Community Workshop"
                 title="Community Workshop"
                 class="eventImage"
+                ondblclick="enlargeImage(this)"
               />
               <p><b>Community Workshop</b></p>
               <p>Skill development and learning sessions.</p>
@@ -114,6 +188,7 @@
                 alt="Food Fair"
                 title="Food Fair"
                 class="eventImage"
+                ondblclick="enlargeImage(this)"
               />
               <p><b>Food Fair</b></p>
               <p>Traditional and modern food stalls.</p>
@@ -124,6 +199,7 @@
                 alt="Tree Plantation Drive"
                 title="Tree Plantation Drive"
                 class="eventImage"
+                ondblclick="enlargeImage(this)"
               />
               <p><b>Tree Plantation Drive</b></p>
               <p>Residents planting trees for a greener city.</p>
@@ -134,6 +210,7 @@
                 alt="Art Exhibition"
                 title="Art Exhibition"
                 class="eventImage"
+                ondblclick="enlargeImage(this)"
               />
               <p><b>Art Exhibition</b></p>
               <p>Display of creative works by local artists.</p>
@@ -141,29 +218,8 @@
           </tr>
         </table>
       </section>
-      <!-- Contact Section -->
       <section id="registration">
         <h2 class="highlight">Event Registration</h2>
-        <style>
-          form {
-            width: 500px;
-            padding: 15px;
-            border: 1px solid gray;
-            margin-top: 15px;
-          }
-          form div {
-            margin-bottom: 12px;
-          }
-          input,
-          select,
-          textarea {
-            width: 100%;
-            padding: 8px;
-          }
-          button {
-            padding: 8px 15px;
-          }
-        </style>
         <form onsubmit="registerEvent(event)">
           <div>
             <label>Name:</label>
@@ -174,18 +230,34 @@
               autofocus
             />
           </div>
+
           <div>
             <label>Email:</label>
             <input type="email" placeholder="Enter your email" required />
           </div>
+
+          <div>
+            <label>Phone Number:</label>
+            <input
+              type="text"
+              id="phone"
+              placeholder="Enter 10-digit phone number"
+              onblur="validatePhone()"
+              required
+            />
+          </div>
+
           <div>
             <label>Event Date:</label>
             <input type="date" required />
           </div>
+
           <div>
             <label>Event Type:</label>
-            <select required>
+
+            <select id="eventType" onchange="showFee()" required>
               <option value="">Select Event</option>
+
               <option>Music Festival</option>
               <option>Sports Meet</option>
               <option>Community Workshop</option>
@@ -194,19 +266,38 @@
               <option>Art Exhibition</option>
             </select>
           </div>
+
+          <p id="feeDisplay"></p>
+
+          <div>
+            <label>Feedback:</label>
+
+            <textarea
+              id="feedback"
+              rows="4"
+              placeholder="Share your feedback"
+              onkeyup="countCharacters()"
+            >
+            </textarea>
+          </div>
+
+          <p id="charCount">Characters Typed: 0</p>
+
           <div>
             <label>Message:</label>
-            <textarea
-              rows="4"
-              placeholder="Enter your message"
-              required
-            ></textarea>
+
+            <textarea rows="4" placeholder="Enter your message" required>
+            </textarea>
           </div>
-          <button type="submit">Register</button>
+
+          <button type="submit" onclick="showConfirmation()">Register</button>
+
           <br /><br />
+
           <output id="registrationOutput"></output>
         </form>
       </section>
+      <!-- Contact Section -->
       <section id="contact">
         <h2 class="highlight">Contact</h2>
         <p>Email: communityportal@email.com</p>
