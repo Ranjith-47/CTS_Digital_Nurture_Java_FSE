@@ -32,18 +32,15 @@
         border: 1px solid gray;
         margin-top: 15px;
       }
-
       form div {
         margin-bottom: 12px;
       }
-
       input,
       select,
       textarea {
         width: 100%;
         padding: 8px;
       }
-
       button {
         padding: 8px 15px;
       }
@@ -52,10 +49,11 @@
       function registerEvent(event) {
         event.preventDefault();
 
+        formSubmitted = true;
+
         document.getElementById("registrationOutput").value =
           "Registration Successful! Thank you for registering.";
       }
-
       function validatePhone() {
         let phone = document.getElementById("phone").value;
 
@@ -63,11 +61,9 @@
           alert("Please enter a valid 10-digit phone number.");
         }
       }
-
       function showFee() {
         let eventType = document.getElementById("eventType").value;
         let fee = "";
-
         if (eventType === "Music Festival") {
           fee = "Registration Fee: ₹100";
         } else if (eventType === "Sports Meet") {
@@ -84,11 +80,9 @@
 
         document.getElementById("feeDisplay").innerHTML = fee;
       }
-
       function showConfirmation() {
         alert("Your registration is being processed.");
       }
-
       function enlargeImage(img) {
         if (img.style.width === "400px") {
           img.style.width = "250px";
@@ -98,12 +92,23 @@
           img.style.height = "260px";
         }
       }
-
       function countCharacters() {
         let text = document.getElementById("feedback").value;
 
         document.getElementById("charCount").innerHTML =
           "Characters Typed: " + text.length;
+        function videoReady() {
+          document.getElementById("videoStatus").innerHTML =
+            "Video ready to play";
+        }
+
+        let formSubmitted = false;
+
+        window.onbeforeunload = function () {
+          if (!formSubmitted) {
+            return "You have not completed the registration form.";
+          }
+        };
       }
     </script>
   </head>
@@ -230,12 +235,10 @@
               autofocus
             />
           </div>
-
           <div>
             <label>Email:</label>
             <input type="email" placeholder="Enter your email" required />
           </div>
-
           <div>
             <label>Phone Number:</label>
             <input
@@ -246,15 +249,12 @@
               required
             />
           </div>
-
           <div>
             <label>Event Date:</label>
             <input type="date" required />
           </div>
-
           <div>
             <label>Event Type:</label>
-
             <select id="eventType" onchange="showFee()" required>
               <option value="">Select Event</option>
 
@@ -266,12 +266,9 @@
               <option>Art Exhibition</option>
             </select>
           </div>
-
           <p id="feeDisplay"></p>
-
           <div>
             <label>Feedback:</label>
-
             <textarea
               id="feedback"
               rows="4"
@@ -280,23 +277,31 @@
             >
             </textarea>
           </div>
-
           <p id="charCount">Characters Typed: 0</p>
-
           <div>
             <label>Message:</label>
-
             <textarea rows="4" placeholder="Enter your message" required>
             </textarea>
           </div>
-
           <button type="submit" onclick="showConfirmation()">Register</button>
-
           <br /><br />
-
           <output id="registrationOutput"></output>
         </form>
       </section>
+      <section id="videoInvite">
+        <h2 class="highlight">Event Promo Video</h2>
+
+        <p>Watch a short introduction to our upcoming community events.</p>
+
+        <video width="500" controls oncanplay="videoReady()">
+          <source src="videos/event_promo.mp4" type="video/mp4" />
+
+          Your browser does not support video playback.
+        </video>
+
+        <p id="videoStatus"></p>
+      </section>
+
       <!-- Contact Section -->
       <section id="contact">
         <h2 class="highlight">Contact</h2>
