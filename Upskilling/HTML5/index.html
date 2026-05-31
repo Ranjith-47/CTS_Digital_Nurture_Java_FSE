@@ -14,6 +14,18 @@
             background-color: yellow;
             padding: 2px 5px;
         }
+        .eventImage {
+            border: 2px solid black;
+            width: 250px;
+            height: 160px;
+        }
+        table {
+            margin-top: 15px;
+        }
+        td {
+            text-align: center;
+            padding: 10px;
+        }
     </style>
 </head>
 <body>
@@ -38,6 +50,7 @@
     </div>
     <!-- Main -->
     <main>
+        <!-- Home Section -->
         <section id="home">
             <h2 class="highlight">Home</h2>
             <p>
@@ -47,18 +60,79 @@
                 with community activities.
             </p>
         </section>
+        <!-- Events Section -->
         <section id="events">
             <h2 class="highlight">Events</h2>
             <p>
                 Explore upcoming cultural programs,
-                workshops, sports events, and
-                community gatherings.
+                workshops, sports events, and community gatherings.
             </p>
+
+            <h3>Past Community Events Gallery</h3>
+            <table>
+                <tr>
+                    <td>
+                        <img src="images/music_festival.jpg"
+                             alt="Music Festival"
+                             title="Music Festival"
+                             class="eventImage">
+                        <p><b>Music Festival</b></p>
+                        <p>Local artists performing live music.</p>
+                    </td>
+                    <td>
+                        <img src="images/sports_meet.jpg"
+                             alt="Sports Meet"
+                             title="Sports Meet"
+                             class="eventImage">
+                        <p><b>Sports Meet</b></p>
+                        <p>Community sports and fitness activities.</p>
+                    </td>
+
+                    <td>
+                        <img src="images/community.jpg"
+                             alt="Community Workshop"
+                             title="Community Workshop"
+                             class="eventImage">
+                        <p><b>Community Workshop</b></p>
+                        <p>Skill development and learning sessions.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="images/food.jpg"
+                             alt="Food Fair"
+                             title="Food Fair"
+                             class="eventImage">
+
+                        <p><b>Food Fair</b></p>
+                        <p>Traditional and modern food stalls.</p>
+                    </td>
+
+                    <td>
+                        <img src="images/tree.jpg"
+                             alt="Tree Plantation Drive"
+                             title="Tree Plantation Drive"
+                             class="eventImage">
+                        <p><b>Tree Plantation Drive</b></p>
+                        <p>Residents planting trees for a greener city.</p>
+                    </td>
+                    <td>
+                        <img src="images/art.jpg"
+                             alt="Art Exhibition"
+                             title="Art Exhibition"
+                             class="eventImage">
+                        <p><b>Art Exhibition</b></p>
+                        <p>Display of creative works by local artists.</p>
+                    </td>
+                </tr>
+            </table>
         </section>
+        <!-- Contact Section -->
         <section id="contact">
             <h2 class="highlight">Contact</h2>
             <p>Email: communityportal@email.com</p>
             <p>Phone: +91 9876543210</p>
+
         </section>
     </main>
     <!-- Footer -->
