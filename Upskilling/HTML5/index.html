@@ -97,19 +97,46 @@
 
         document.getElementById("charCount").innerHTML =
           "Characters Typed: " + text.length;
-        function videoReady() {
-          document.getElementById("videoStatus").innerHTML =
-            "Video ready to play";
-        }
-
-        let formSubmitted = false;
-
-        window.onbeforeunload = function () {
-          if (!formSubmitted) {
-            return "You have not completed the registration form.";
-          }
-        };
       }
+      function videoReady() {
+        document.getElementById("videoStatus").innerHTML =
+          "Video ready to play";
+      }
+      function savePreference() {
+        let eventType = document.getElementById("eventType").value;
+
+        localStorage.setItem("preferredEvent", eventType);
+
+        sessionStorage.setItem("lastSelectedEvent", eventType);
+      }
+
+      function loadPreference() {
+        let savedEvent = localStorage.getItem("preferredEvent");
+
+        if (savedEvent) {
+          document.getElementById("eventType").value = savedEvent;
+
+          showFee();
+        }
+      }
+
+      function clearPreferences() {
+        localStorage.clear();
+        sessionStorage.clear();
+
+        document.getElementById("eventType").value = "";
+
+        document.getElementById("feeDisplay").innerHTML = "";
+
+        alert("Preferences Cleared");
+      }
+      let formSubmitted = false;
+      window.onbeforeunload = function () {
+        if (!formSubmitted) {
+          return "You have not completed the registration form.";
+        }
+      };
+      window.onload = loadPreference;
     </script>
   </head>
   <body>
@@ -255,7 +282,14 @@
           </div>
           <div>
             <label>Event Type:</label>
-            <select id="eventType" onchange="showFee()" required>
+            <select
+              id="eventType"
+              onchange="
+                showFee();
+                savePreference();
+              "
+              required
+            >
               <option value="">Select Event</option>
 
               <option>Music Festival</option>
@@ -288,6 +322,13 @@
           <output id="registrationOutput"></output>
         </form>
       </section>
+      <section id="preferences">
+        <h2 class="highlight">User Preferences</h2>
+
+        <p>Your selected event type will be remembered for future visits.</p>
+
+        <button onclick="clearPreferences()">Clear Preferences</button>
+      </section>
       <section id="videoInvite">
         <h2 class="highlight">Event Promo Video</h2>
 
@@ -295,13 +336,10 @@
 
         <video width="500" controls oncanplay="videoReady()">
           <source src="videos/event_promo.mp4" type="video/mp4" />
-
           Your browser does not support video playback.
         </video>
-
         <p id="videoStatus"></p>
       </section>
-
       <!-- Contact Section -->
       <section id="contact">
         <h2 class="highlight">Contact</h2>
