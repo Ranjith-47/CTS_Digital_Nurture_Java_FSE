@@ -136,6 +136,50 @@
           return "You have not completed the registration form.";
         }
       };
+      function findNearbyEvents() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition, showError, {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 0,
+          });
+        } else {
+          document.getElementById("locationResult").innerHTML =
+            "Geolocation is not supported by this browser.";
+        }
+      }
+
+      function showPosition(position) {
+        document.getElementById("locationResult").innerHTML =
+          "<strong>Your Location:</strong><br>" +
+          "Latitude: " +
+          position.coords.latitude +
+          "<br>Longitude: " +
+          position.coords.longitude;
+      }
+
+      function showError(error) {
+        let message = "";
+
+        switch (error.code) {
+          case error.PERMISSION_DENIED:
+            message = "Location access was denied.";
+            break;
+
+          case error.POSITION_UNAVAILABLE:
+            message = "Location information is unavailable.";
+            break;
+
+          case error.TIMEOUT:
+            message = "Location request timed out.";
+            break;
+
+          default:
+            message = "An unknown error occurred.";
+        }
+
+        document.getElementById("locationResult").innerHTML = message;
+      }
       window.onload = loadPreference;
     </script>
   </head>
@@ -339,6 +383,15 @@
           Your browser does not support video playback.
         </video>
         <p id="videoStatus"></p>
+      </section>
+      <section id="geolocation">
+        <h2 class="highlight">Find Nearby Events</h2>
+
+        <p>Click the button below to find events near your location.</p>
+
+        <button onclick="findNearbyEvents()">Find Nearby Events</button>
+
+        <p id="locationResult"></p>
       </section>
       <!-- Contact Section -->
       <section id="contact">
